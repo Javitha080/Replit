@@ -4,21 +4,26 @@
 echo "Starting Netlify build process..."
 
 # Install dependencies
+echo "Installing dependencies..."
 npm install
 
-# Build client-side only (we'll skip server-side build for static hosting)
+# Build client-side only
+echo "Building project..."
 npx vite build
 
 # Apply post-build optimizations
 echo "Applying post-build optimizations..."
 
 # Create _redirects file for SPA routing
+echo "Creating SPA redirects..."
 echo "/* /index.html 200" > dist/_redirects
 
 # Create robots.txt file
+echo "Generating robots.txt..."
 echo -e "User-agent: *\nAllow: /" > dist/robots.txt
 
 # Create a simple sitemap
+echo "Generating sitemap.xml..."
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
