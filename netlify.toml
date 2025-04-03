@@ -9,6 +9,7 @@
 
   # Use our custom build script for Netlify
   command = "./netlify-build.sh"
+  command = "chmod +x netlify-build.sh"
 
 [build.environment]
   # Helps ensure the build uses the correct version of Node
