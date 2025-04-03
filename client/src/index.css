@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 160 84% 39%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 262.1 83.3% 57.8%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 0 91% 71%;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 221.2 83.2% 53.3%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221.2 83.2% 53.3%;
+  }
+
+  .dark {
+    --background: 225 9% 9%;
+    --foreground: 210 40% 98%;
+    --card: 225 9% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 225 9% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 160 84% 39%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --chart-1: 217.2 91.2% 59.8%;
+    --chart-2: 160 64% 49%;
+    --chart-3: 262.1 83.3% 57.8%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 0 91% 71%;
+
+    --sidebar-background: 225 9% 7%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 222.2 47.4% 11.2%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Dark mode colors */
+  .dark-200 {
+    @apply bg-[#121212];
+  }
+  .dark-100 {
+    @apply bg-[#1e1e1e];
+  }
+  .dark-300 {
+    @apply bg-[#0a0a0a];
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/15 backdrop-blur-xl border border-white/10;
+  }
+
+  .dark .glass {
+    @apply bg-[#121212]/60 border-white/5;
+  }
+  
+  /* Neo-Glassmorphism - Modern 2025 variant with vibrant color layers */
+  .neo-glass {
+    @apply relative overflow-hidden backdrop-blur-xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .dark .neo-glass {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.7), rgba(10, 10, 10, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Add vibrant color overlay variants */
+  .neo-glass-blue {
+    @apply before:absolute before:inset-0 before:bg-blue-500/10 before:z-[-1];
+  }
+  
+  .neo-glass-purple {
+    @apply before:absolute before:inset-0 before:bg-purple-500/10 before:z-[-1];
+  }
+  
+  .neo-glass-green {
+    @apply before:absolute before:inset-0 before:bg-emerald-500/10 before:z-[-1];
+  }
+
+  /* Japanese Box Style */
+  .japanese-box {
+    @apply border border-black/10 shadow-[0_0_0_1px_rgba(0,0,0,0.05)];
+  }
+
+  .dark .japanese-box {
+    @apply border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.02)];
+  }
+  
+  /* Bento Grid Layout */
+  .bento-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+  }
+  
+  .bento-item {
+    @apply rounded-xl overflow-hidden relative;
+  }
+  
+  .bento-item-large {
+    @apply sm:col-span-2 sm:row-span-2;
+  }
+  
+  .bento-item-medium {
+    @apply sm:col-span-1 sm:row-span-2;
+  }
+  
+  /* Abstract Shape */
+  .abstract-shape {
+    @apply absolute pointer-events-none;
+    filter: blur(5px);
+  }
+  
+  /* Brutalist elements */
+  .brutalist-box {
+    @apply border-2 border-black dark:border-white font-mono bg-transparent;
+  }
+  
+  /* Noise texture overlay */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  
+  /* Dopamine color palette gradients */
+  .dopamine-gradient-1 {
+    @apply bg-gradient-to-br from-pink-500 to-blue-500;
+  }
+  
+  .dopamine-gradient-2 {
+    @apply bg-gradient-to-br from-purple-600 to-blue-400;
+  }
+  
+  .dopamine-gradient-3 {
+    @apply bg-gradient-to-br from-amber-500 to-rose-500;
+  }
+  
+  /* Gaussian blur overlays */
+  .gaussian-overlay {
+    @apply absolute inset-0 backdrop-blur-2xl z-10 opacity-50;
+  }
+  
+  /* Glow effects */
+  .neon-glow {
+    box-shadow: 0 0 10px 2px var(--glow-color, rgba(139, 92, 246, 0.5)), 
+                0 0 20px 5px var(--glow-color, rgba(139, 92, 246, 0.3));
+  }
+  
+  .dark .neon-glow {
+    box-shadow: 0 0 15px 2px var(--glow-color, rgba(139, 92, 246, 0.6)), 
+                0 0 30px 8px var(--glow-color, rgba(139, 92, 246, 0.4));
+  }
+  
+  /* Font families */
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Typing Animation */
+  .typing-container {
+    @apply relative overflow-hidden;
+  }
+
+  .typing-text {
+    @apply inline-block border-r-0 whitespace-nowrap m-0 tracking-wider;
+  }
+
+  /* Blink caret animation */
+  @keyframes blink-caret {
+    from, to { @apply border-transparent; }
+    50% { @apply border-white; }
+  }
+
+  .animate-blink-caret {
+    animation: blink-caret 0.75s step-end infinite;
+  }
+}
+
+/* Scrollbar Styles with Glassmorphism Effect */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(79, 70, 229, 0.5));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(79, 70, 229, 0.7));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(124, 58, 237, 0.5));
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(124, 58, 237, 0.7));
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Prevent scrollbar from shifting layout */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 70, 229, 0.5) rgba(241, 245, 249, 0.1);
+}
+
+.dark html {
+  scrollbar-color: rgba(139, 92, 246, 0.5) rgba(30, 41, 59, 0.2);
+}
+
+/* Animated scrollbar for special containers */
+.animated-scrollbar::-webkit-scrollbar-thumb {
+  animation: scrollbar-glow 3s infinite alternate;
+}
+
+@keyframes scrollbar-glow {
+  from {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(79, 70, 229, 0.5));
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  to {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.5), rgba(124, 58, 237, 0.6));
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Custom smooth scroll */
+html {
+  @apply scroll-smooth;
+}
+
+/* Custom background patterns */
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
